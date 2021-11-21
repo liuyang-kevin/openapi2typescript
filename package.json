@@ -1,6 +1,6 @@
 {
   "name": "@umijs/openapi",
-  "version": "1.3.0",
+  "version": "1.3.6",
   "description": "",
   "license": "MIT",
   "author": "chenshuai2144",
@@ -13,15 +13,14 @@
     "build": "tsc",
     "prepublishOnly": "npm run build && np --no-cleanup --yolo --no-publish --any-branch",
     "start": "tsc -w",
-    "test": "rm -rf ./test/servers/ &&  npm run build && cd ./test && node ./test.js && cd ..",
-    "localConvert4Project": "rm -rf ./test/servers/ &&  npm run build && cd ./test && node ./test.js && cd .. && rm -rf ../../psp-web/src/services/wj && mv ./test/servers/api/  ../../psp-web/src/services/wj"
+    "test": "rm -rf ./test/servers/ ./test/file-servers/ &&  npm run build && cd ./test && node ./test.js && cd ..",
+    "localConvert4Project": "rm -rf ./test/servers/ ./test/file-servers/ &&  npm run build && cd ./test && node ./test.js && cd .. && rm -rf ../../wj/psp-web-pro/src/services/wj && mv ./test/servers/api/  ../../wj/psp-web-pro/src/services/wj"
   },
   "dependencies": {
     "@umijs/fabric": "^2.5.6",
     "dayjs": "^1.10.3",
     "eslint": "^7.18.0",
     "glob": "^7.1.6",
-    "lodash": "^4.17.20",
     "memoizee": "^0.4.15",
     "mock.js": "^0.2.0",
     "mockjs": "^1.1.0",
