@@ -77,7 +77,7 @@ function getRefName(refObject: any): string {
 
 const getType = (schemaObject: SchemaObject | undefined, namespace: string = ''): string => {
   if (schemaObject === undefined || schemaObject === null) {
-    return 'any';
+    return 'unknown';
   }
   if (typeof schemaObject !== 'object') {
     return schemaObject;
@@ -180,7 +180,7 @@ const getType = (schemaObject: SchemaObject | undefined, namespace: string = '')
       })
       .join('')}}`;
   }
-  return 'any';
+  return 'unknown';
 };
 
 export const getGenInfo = (isDirExist: boolean, appName: string, absSrcPath: string) => {
