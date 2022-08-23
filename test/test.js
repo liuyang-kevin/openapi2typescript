@@ -5,14 +5,9 @@ const fs = require('fs');
 const openAPI = require('../dist/index');
 
 const gen = async () => {
-  await openAPI.generateService({
-    schemaPath: `https://api-dev-guanxincloud.wjbrain.com/swagger/swagger.json`,
-    serversPath: './servers',
-  });
-
   // await openAPI.generateService({
-  //   schemaPath: `${__dirname}/example-files/dtx.json`,
-  //   serversPath: './servers-dtx',
+  //   schemaPath: `${__dirname}/example-files/swagger-get-method-params-convert-obj.json`,
+  //   serversPath: './servers',
   // });
 
   // await openAPI.generateService({
@@ -25,6 +20,14 @@ const gen = async () => {
   // assert(fileControllerStr.indexOf('!(item instanceof File)') > 0);
   // assert(fileControllerStr.indexOf(`requestType: 'form',`) > 0);
   // assert(fileControllerStr.indexOf('Content-Type') < 0);
+
+  await openAPI.generateService({
+    requestLibPath: "import { request } from 'umi'; export const basePath=`/psp`;",
+    apiPrefix: () => { return 'basePath' },
+    schemaPath: `https://api-dev-guanxincloud.wjbrain.com/swagger/swagger.json`,
+    serversPath: './servers',
+  });
+
   // await openAPI.generateService({
   //   // requestLibPath: "import request  from '@/request';",
   //   schemaPath: `http://82.157.33.9/swagger/swagger.json`,
