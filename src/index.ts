@@ -24,14 +24,14 @@ export type GenerateServiceProps = {
    * api 的前缀
    */
   apiPrefix?:
-    | string
-    | ((params: {
-        path: string;
-        method: string;
-        namespace: string;
-        functionName: string;
-        autoExclude?: boolean;
-      }) => string);
+  | string
+  | ((params: {
+    path: string;
+    method: string;
+    namespace: string;
+    functionName: string;
+    autoExclude?: boolean;
+  }) => string);
   /**
    * 生成的文件夹的路径
    */
@@ -83,6 +83,21 @@ export const getSchema = async (schemaPath: string) => {
 
 const getOpenAPIConfig = async (schemaPath: string) => {
   const schema = await getSchema(schemaPath);
+  console.log(`这里可以额外整理swagger结构`);
+  // console.log(typeof schema);
+  // Object.keys(schema).forEach(key => {
+  //   Object.keys(schema[key]).forEach(skey => {
+  //     Object.keys(schema[key][skey]).forEach(mkey => {
+  //       if (schema[key][skey][mkey]['tags']) {
+  //         if(schema[key][skey][mkey]['tags'] instanceof Array){
+  //           // schema[key][skey][mkey]['tags'] = [...schema[key][skey][mkey]['tags'], 'bbb'];
+  //         }
+  //         console.log(typeof schema[key][skey][mkey]['tags'], schema[key][skey][mkey]['tags'] instanceof Array, schema[key][skey][mkey]['tags']);
+  //       }
+  //     });
+  //   });
+  // })
+
   const openAPI = await converterSwaggerToOpenApi(schema);
   if (!schema) {
     return null;
